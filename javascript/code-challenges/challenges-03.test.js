@@ -24,7 +24,7 @@ For example, typeNum([1, 'bob' ,3]) returns [1,3].
 ------------------------------------------------------------------------------------------------ */
 
 const typeNum = (arr) => {
-  // Solution code here...
+  arr.filter(num => typeof num === 'number');
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -60,7 +60,9 @@ For example, notInFirstArray([1,2,3], [1,2,3,4]) returns [4].
 ------------------------------------------------------------------------------------------------ */
 
 const notInFirstArray = (forbiddenValues, arr) => {
-  // Solution code here...
+  arr.filter(placeHold => {
+    return !forbiddenValues.includes(placeHold);
+  });
 };
 
 /* ------------------------------------------------------------------------------------------------
