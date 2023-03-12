@@ -12,8 +12,7 @@ Note the space in between first and last names.
 You can assume that neither firstName nor lastName will be blank
 ------------------------------------------------------------------------------------------------ */
 const toLastNames = people => {
-  
-  return people;
+  return people.map(temp => `${temp.firstName} ${temp.lastName}`);
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -24,7 +23,7 @@ Write a function named addValues that, given an array of numbers as input, uses 
 ------------------------------------------------------------------------------------------------ */
 
 const addValues = (arr) => {
-  // Solution code here...
+  return arr.reduce((a, b) => (a + b), 0);
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -40,7 +39,10 @@ Write a function named addPurchases that, given an array of objects as input, us
 ------------------------------------------------------------------------------------------------ */
 
 const addPurchases = (arr) => {
-  // Solution code here...
+  return arr.reduce((a, b) => {
+    console.log(a, b.purchasePrice);
+    return a += b.purchasePrice;
+  }, 0);
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -52,7 +54,9 @@ Note: You may not use the array's built-in length property.
 ------------------------------------------------------------------------------------------------ */
 
 const countNumberOfElements = (arr) => {
-  // Solution code here...
+  return arr.reduce((a) => {
+    return a += 1;
+  }, 0);
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -113,7 +117,10 @@ let starWarsData = [{
 }];
 
 const returnNames = (arr) => {
-  // Solution code here...
+  return arr.reduce((acc, val) => {
+    acc.push(val.name);
+    return acc;
+  }, []);
 };
 
 /* ------------------------------------------------------------------------------------------------
