@@ -21,7 +21,11 @@ Becomes:
 ------------------------------------------------------------------------------------------------ */
 
 function transformToLis(obj) {
-  // Solution code here...
+  const newArr = [];
+  for (const [key, value] of Object.entries(obj)) {
+    newArr.push(`<li>${key}: ${value}</li>`);
+  }
+  return newArr;
 }
 
 /* ------------------------------------------------------------------------------------------------
@@ -56,9 +60,7 @@ For example, [[1, 2, 3, 4, 5], [6, 7, 2, 4, 5, 7], [9, 2, 3, 6,]] returns 66.
 ------------------------------------------------------------------------------------------------ */
 
 const totalSum = (input) => {
-  input.map(arr => {
-    console.log(arr);
-  });
+  return input.flat().reduce((a, b) => a + b, 0);
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -142,7 +144,13 @@ let starWarsData = [{
 }];
 
 let findMaleAndFemale = (data) => {
-  // Solution code here...
+  let newArr = [];
+  data.forEach(e => {
+    if (e.gender === 'male' || e.gender === 'female') {
+      newArr.push(e.name);
+    }
+  });
+  return newArr.join(' and ');
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -152,9 +160,8 @@ Write a function named findShortest that, given the Star Wars data from Challeng
 ------------------------------------------------------------------------------------------------ */
 
 let findShortest = (data) => {
-  data.reduce((shortChar, curr) => {
-    return Number(shortChar.height) < Number(curr.height) ? shortChar : curr;
-  });
+  data.sort((a, b) => a.height - b.height);
+  return data[0].name;
 };
 
 /* ------------------------------------------------------------------------------------------------
