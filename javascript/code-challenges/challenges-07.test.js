@@ -132,6 +132,7 @@ const listFoods = (recipe) => {
     let x = element.slice(element.indexOf(' ') + 1);
     let y = x.slice(x.indexOf(' ') + 1);
     result.push(y);
+
   });
   return result;
 };
