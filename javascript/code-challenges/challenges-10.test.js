@@ -8,7 +8,9 @@ Write a function named returnTen, takes in a string and uses split and splice to
 ------------------------------------------------------------------------------------------------ */
 
 function returnTen(str) {
-
+  let newArr = str.split('');
+  let newerArr = newArr.splice(-10);
+  return newerArr;
 }
 
 /* ------------------------------------------------------------------------------------------------
@@ -51,7 +53,13 @@ For example:
 return: 35
 ------------------------------------------------------------------------------------------------ */
 const totalSum = (matrix) => {
-  // Solution code here...
+  let sum = 0;
+  for (let i = 0; i < matrix.length; i++) {
+    for (let j = 0; j < matrix[i].length; j++) {
+      sum += matrix[i][j];
+    }
+  }
+  return sum;
 };
 
 
@@ -78,7 +86,14 @@ const alkiBeach = [33, 31, 147, 130, 27, 93, 38, 126, 141, 63, 46, 17];
 const cookieStores = [firstPike, seaTac, seattleCenter, capHill, alkiBeach];
 
 const grandTotal = (stores) => {
-  
+  const tempArray = [];
+  for (let i of hoursOpen) tempArray.push(0);
+  for (let i of stores) {
+    for (let j = 0; j < i.length; j++) {
+      tempArray[j] += i[j];
+    }
+  }
+  return tempArray;
 
 };
 
@@ -124,7 +139,7 @@ const errands = [
 ];
 
 const howManyTreats = (arr) => {
-  console.log(arr.map((temp => temp.store)));
+  return arr[2].items[1].quantity;
 };
 
 /* ------------------------------------------------------------------------------------------------
