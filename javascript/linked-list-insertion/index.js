@@ -130,7 +130,6 @@ class LinkedList {
   }
 }
 
-
 class Stack {
   constructor() {
     this.top = null;
@@ -204,4 +203,27 @@ class Queue {
   }
 }
 
-module.exports = { LinkedList, Node, Queue, Stack };
+class PseudoQueue {
+  constructor() {
+    this.inStack = new Stack();
+    this.outStack = new Stack();
+  }
+
+  enqueue(value) {
+    this.inStack.push(value);
+  }
+
+  dequeue() {
+    if (this.outStack.isEmpty()) {
+      while (!this.inStack.isEmpty()) {
+        this.outStack.push(this.inStack.pop());
+      }
+    }
+    if (this.outStack.isEmpty()) {
+      throw new Error('PseudoQueue is empty');
+    }
+    return this.outStack.pop();
+  }
+}
+
+module.exports = { LinkedList, Node, Queue, Stack, PseudoQueue };
