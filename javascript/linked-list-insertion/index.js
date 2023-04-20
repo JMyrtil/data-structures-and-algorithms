@@ -85,6 +85,31 @@ class LinkedList {
     }
     throw new Error(`Value ${value} not found in list.`);
   }
+
+  kthFromEnd(k) {
+    if (k < 0) {
+      throw new Error('input cannot be negative');
+    }
+
+    let length = 0;
+    let current = this.head;
+    while (current) {
+      length++;
+      current = current.next;
+    }
+
+    if (k >= length) {
+      throw new Error('input is greater than or equal to the length of the list');
+    }
+
+    let position = length - k - 1;
+    current = this.head;
+    for (let i = 0; i < position; i++) {
+      current = current.next;
+    }
+
+    return current.value;
+  }
 }
 
 module.exports = { LinkedList, Node };
