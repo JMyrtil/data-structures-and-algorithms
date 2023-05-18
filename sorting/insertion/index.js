@@ -1,17 +1,24 @@
-function insertionSort(input) {
-  for (let i = 1; i < input.length; i++) {
-    let value = input[i];
-    let j = i - 1;
-
-    while (j >= 0 && input[j] > value) {
-      input[j + 1] = input[j];
-      j--;
-    }
-
-    input[j + 1] = value;
+function insert(sorted, value) {
+  let i = 0;
+  while (value > sorted[i]) {
+    i++;
   }
-
-  return input;
+  while (i < sorted.length) {
+    let temp = sorted[i];
+    sorted[i] = value;
+    value = temp;
+    i++;
+  }
+  sorted.push(value);
 }
 
-module.exports = insertionSort;
+function insertionSort(input) {
+  let sorted = [];
+  sorted[0] = input[0];
+  for (let i = 1; i < input.length; i++) {
+    insert(sorted, input[i]);
+  }
+  return sorted;
+}
+
+module.exports = { insertionSort, insert };
