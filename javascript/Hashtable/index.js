@@ -79,4 +79,22 @@ class Hashtable {
   }
 }
 
-module.exports = Hashtable;
+function repeatedWord(str) {
+  const wordCount = {};
+  const words = str.toLowerCase().split(' ');
+
+  for (let i = 0; i < words.length; i++) {
+    const word = words[i];
+
+    if (wordCount[word]) {
+      return word;
+    }
+
+    wordCount[word] = 1;
+  }
+
+  return 'No repeated words found';
+}
+
+
+module.exports = { Hashtable, repeatedWord };

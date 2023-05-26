@@ -1,6 +1,6 @@
 'use strict';
 
-const HashTable = require('./index');
+const { HashTable, repeatedWord } = require('./index');
 
 const tableSize = 1024;
 const table = new HashTable(tableSize);
@@ -46,5 +46,23 @@ describe('HashTable', () => {
     expect(hashOne).toBeGreaterThanOrEqual(0);
     expect(hashTwo).toBeGreaterThanOrEqual(0);
     expect(hashThree).toBeGreaterThanOrEqual(0);
+  });
+});
+
+describe('repeatedWord', () => {
+  it('should return the first repeated word in a string', () => {
+    const input1 = 'Once upon a time, there was a brave princess who...';
+    const input2 = 'It was the best of times, it was the worst of times, it was the age of wisdom...';
+    const input3 = 'It was a queer, sultry summer, the summer they electrocuted the Rosenbergs...';
+
+    expect(repeatedWord(input1)).toBe('a');
+    expect(repeatedWord(input2)).toBe('it');
+    expect(repeatedWord(input3)).toBe('summer');
+  });
+
+  it('should return "No repeated words found" if no repeated words are found', () => {
+    const input = 'This is a sample string without any repeated words';
+
+    expect(repeatedWord(input)).toBe('No repeated words found');
   });
 });
