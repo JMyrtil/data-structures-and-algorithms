@@ -1,6 +1,6 @@
 'use strict';
 
-const { HashTable, repeatedWord } = require('./index');
+const { HashTable, repeatedWord, leftJoin } = require('./index');
 
 const tableSize = 1024;
 const table = new HashTable(tableSize);
@@ -64,5 +64,34 @@ describe('repeatedWord', () => {
     const input = 'This is a sample string without any repeated words';
 
     expect(repeatedWord(input)).toBe('No repeated words found');
+  });
+});
+
+describe('left join', () => {
+  const table1 = new HashTable(tableSize);
+  const table2 = new HashTable(tableSize);
+
+  table1.set('diligent', 'employed');
+  table1.set('fond', 'enamored');
+  table1.set('guide', 'usher');
+  table1.set('outfit', 'garb');
+  table1.set('wrath', 'anger');
+
+  table2.set('diligent', 'idle');
+  table2.set('fond', 'averse');
+  table2.set('guide', 'follow');
+  table2.set('flow', 'jam');
+  table2.set('wrath', 'delight');
+
+  it('should perform a left join on two hash tables', () => {
+    const result = leftJoin(table1, table2);
+
+    expect(result).toEqual([
+      ['diligent', 'employed', 'idle'],
+      ['fond', 'enamored', 'averse'],
+      ['guide', 'usher', 'follow'],
+      ['outfit', 'garb', null],
+      ['wrath', 'anger', 'delight']
+    ]);
   });
 });
