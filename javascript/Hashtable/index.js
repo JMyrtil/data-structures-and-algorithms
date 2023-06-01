@@ -96,5 +96,18 @@ function repeatedWord(str) {
   return 'No repeated words found';
 }
 
+function leftJoin(hashTable1, hashTable2) {
+  let result = [];
 
-module.exports = { Hashtable, repeatedWord };
+  for (let key of hashTable1.keys()) {
+    let value1 = hashTable1.get(key);
+    let value2 = hashTable2.get(key);
+    value2 = value2 !== undefined ? value2 : null;
+    result.push([key, value1, value2]);
+  }
+
+  return result;
+}
+
+
+module.exports = { Hashtable, repeatedWord, leftJoin };
